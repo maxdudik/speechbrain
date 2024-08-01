@@ -65,7 +65,7 @@ def prepare_mini_librispeech(
         return
 
     # If the dataset doesn't exist yet, download it
-    train_folder = os.path.join(data_folder, "dataset", "dnd")
+    train_folder = os.path.join(data_folder, "librispeech", "train-clean-100")
     if not check_folders(train_folder):
         download_mini_librispeech(data_folder)
 
@@ -204,6 +204,6 @@ def download_mini_librispeech(destination):
     destination : str
         Place to put dataset.
     """
-    train_archive = os.path.join(destination, "dataset_dnd_07.zip")
+    train_archive = os.path.join(destination, "librispeech.zip")
     download_file(MINILIBRI_TRAIN_URL, train_archive)
     shutil.unpack_archive(train_archive, destination)
