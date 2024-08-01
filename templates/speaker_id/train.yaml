@@ -54,10 +54,10 @@ sample_rate: 16000
 number_of_epochs: 25
 batch_size: 16
 lr_start: 0.001
-lr_final: 0.00005
-n_classes: 55 # In this case, we have 55 speakers
+lr_final: 0.0001
+n_classes: 278 # In this case, we have 55 speakers
 emb_dim: 1024 # dimensionality of the embeddings
-num_workers: 2
+num_workers: 4
 dataloader_options:
     batch_size: !ref <batch_size>
     num_workers: !ref <num_workers>
