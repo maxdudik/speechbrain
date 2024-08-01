@@ -47,17 +47,17 @@ error_stats: !name:speechbrain.utils.metric_stats.MetricStats
 ckpt_interval_minutes: 15 # save checkpoint every N min
 
 # Feature parameters
-n_mels: 50
+n_mels: 40
 
 # Training Parameters
 sample_rate: 16000
-number_of_epochs: 50
+number_of_epochs: 25
 batch_size: 16
 lr_start: 0.001
 lr_final: 0.00005
 n_classes: 55 # In this case, we have 55 speakers
 emb_dim: 1024 # dimensionality of the embeddings
-num_workers: 4
+num_workers: 2
 dataloader_options:
     batch_size: !ref <batch_size>
     num_workers: !ref <num_workers>
@@ -73,7 +73,7 @@ prepare_noise_data: !name:speechbrain.augment.preparation.prepare_dataset_from_U
 
 # Add noise to input signal
 snr_low: 0  # Min SNR for noise augmentation
-snr_high: 20  # Max SNR for noise augmentation
+snr_high: 15  # Max SNR for noise augmentation
 
 add_noise: !new:speechbrain.augment.time_domain.AddNoise
     csv_file: !ref <noise_annotation>
@@ -155,7 +155,7 @@ embedding_model: !new:custom_model.Xvector
 classifier: !new:custom_model.Classifier
     input_shape: [null, null, !ref <emb_dim>]
     activation: !name:torch.nn.LeakyReLU
-    lin_blocks: 2
+    lin_blocks: 1
     lin_neurons: !ref <emb_dim>
     out_neurons: !ref <n_classes>
 
