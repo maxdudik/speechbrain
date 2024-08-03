@@ -61,7 +61,6 @@ lr_final: 0.0001
 base_lr: 0.00000001
 max_lr: !ref <lr_start>
 step_size: 65000
-sample_rate: 16000
 shuffle: True
 random_chunk: True
 n_classes: 55 # In this case, we have 55 speakers
