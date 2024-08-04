@@ -155,7 +155,7 @@ embedding_model: !new:custom_model.Xvector
 classifier: !new:custom_model.Classifier
     input_shape: [null, null, !ref <emb_dim>]
     activation: !name:torch.nn.LeakyReLU
-    lin_blocks: 2
+    lin_blocks: 1
     lin_neurons: !ref <emb_dim>
     out_neurons: !ref <n_classes>
 
