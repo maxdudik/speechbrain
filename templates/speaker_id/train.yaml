@@ -55,7 +55,7 @@ number_of_epochs: 35
 batch_size: 16
 lr_start: 0.001
 lr_final: 0.0001
-n_classes: 28 # In this case, we have 28 speakers
+n_classes: 27 # In this case, we have 27 speakers
 emb_dim: 192 # dimensionality of the embeddings
 num_workers: 4
 dataloader_options:
@@ -144,14 +144,16 @@ mean_var_norm: !new:speechbrain.processing.features.InputNormalization
 # class that's listed here, or replace this `!new` call with a line
 # pointing to a different file you've defined.
 embedding_model: !new:speechbrain.lobes.models.ECAPA_TDNN.ECAPA_TDNN
-    input_shape: [null, null, !ref <n_mels>]
+    input_size: !ref <n_mels>
+    channels: [1024, 1024, 1024, 1024, 3072]
+    kernel_sizes: [5, 3, 3, 3, 1]
+    dilations: [1, 2, 3, 4, 1]
+    groups: [1, 1, 1, 1, 1]
+    attention_channels: 128
     lin_neurons: !ref <emb_dim>
 
-classifier: !new:custom_model.Classifier
-    input_shape: [null, null, !ref <emb_dim>]
-    activation: !name:torch.nn.LeakyReLU
-    lin_blocks: 1
-    lin_neurons: !ref <emb_dim>
+classifier: !new:speechbrain.lobes.models.ECAPA_TDNN.Classifier
+    input_size: !ref <emb_dim>
     out_neurons: !ref <n_classes>
 
 # The first object passed to the Brain class is this "Epoch Counter"
