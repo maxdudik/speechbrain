@@ -15,7 +15,7 @@ NOISE_DATASET_URL: https://www.dropbox.com/scl/fi/a09pj97s5ifan81dqhi4n/noises.z
 RIR_DATASET_URL: https://www.dropbox.com/scl/fi/linhy77c36mu10965a836/RIRs.zip?rlkey=pg9cu8vrpn2u173vhiqyu743u&dl=1
 
 # Data files
-data_folder: !PLACEHOLDER  # e.g. /path/to/Voxceleb
+data_folder: ../../../dataset/dataset/vox_dnd  # e.g. /path/to/Voxceleb
 data_folder_noise: !ref <data_folder>/noise # The noisy sequences for data augmentation will automatically be downloaded here.
 data_folder_rir: !ref <data_folder>/rir # The impulse responses used for data augmentation will automatically be downloaded here.
 train_annotation: !ref <save_folder>/train.csv
@@ -37,7 +37,7 @@ ckpt_interval_minutes: 15 # save checkpoint every N min
 
 # Training parameters
 number_of_epochs: 10
-batch_size: 32
+batch_size: 16
 lr: 0.001
 base_lr: 0.00000001
 max_lr: !ref <lr>
@@ -54,9 +54,9 @@ right_frames: 0
 deltas: False
 
 # Number of speakers
-out_n_neurons: 7205 #1211 for vox1  # 5994 for vox2, 7205 for vox1+vox2
+out_n_neurons: 27 #1211 for vox1  # 5994 for vox2, 7205 for vox1+vox2
 
-num_workers: 4
+num_workers: 2
 dataloader_options:
     batch_size: !ref <batch_size>
     shuffle: !ref <shuffle>
