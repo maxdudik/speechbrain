@@ -36,14 +36,14 @@ skip_prep: False
 ckpt_interval_minutes: 15 # save checkpoint every N min
 
 # Training parameters
-number_of_epochs: 10
+number_of_epochs: 30
 batch_size: 16
 lr: 0.001
 base_lr: 0.00000001
 max_lr: !ref <lr>
 step_size: 65000
 sample_rate: 16000
-sentence_len: 3.0 # seconds
+sentence_len: 6.0 # seconds
 shuffle: True
 random_chunk: True
 
@@ -56,7 +56,7 @@ deltas: False
 # Number of speakers
 out_n_neurons: 27 #1211 for vox1  # 5994 for vox2, 7205 for vox1+vox2
 
-num_workers: 2
+num_workers: 4
 dataloader_options:
     batch_size: !ref <batch_size>
     shuffle: !ref <shuffle>
@@ -128,8 +128,8 @@ drop_freq: !new:speechbrain.augment.time_domain.DropFreq
 
 # Time drop: randomly drops a number of temporal chunks.
 drop_chunk: !new:speechbrain.augment.time_domain.DropChunk
-    drop_length_low: 1000
-    drop_length_high: 2000
+    drop_length_low: 500
+    drop_length_high: 1500
     drop_count_low: 1
     drop_count_high: 5
 
