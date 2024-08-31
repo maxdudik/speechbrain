@@ -48,7 +48,7 @@ shuffle: True
 random_chunk: True
 
 # Feature parameters
-n_mels: 80
+n_mels: 120
 left_frames: 0
 right_frames: 0
 deltas: False
@@ -56,7 +56,7 @@ deltas: False
 # Number of speakers
 out_n_neurons: 27 #1211 for vox1  # 5994 for vox2, 7205 for vox1+vox2
 
-num_workers: 4
+num_workers: 2
 dataloader_options:
     batch_size: !ref <batch_size>
     shuffle: !ref <shuffle>
