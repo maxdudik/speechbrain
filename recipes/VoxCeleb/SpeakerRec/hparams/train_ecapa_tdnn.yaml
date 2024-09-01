@@ -37,7 +37,7 @@ ckpt_interval_minutes: 15 # save checkpoint every N min
 
 # Training parameters
 number_of_epochs: 40
-batch_size: 8
+batch_size: 16
 lr: 0.001
 base_lr: 0.00000001
 max_lr: !ref <lr>
@@ -48,7 +48,7 @@ shuffle: True
 random_chunk: True
 
 # Feature parameters
-n_mels: 80
+n_mels: 120
 left_frames: 0
 right_frames: 0
 deltas: False
